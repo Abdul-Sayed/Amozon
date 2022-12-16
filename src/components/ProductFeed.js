@@ -1,13 +1,13 @@
-import React from "react";
+import { v4 as uuidv4 } from "uuid";
 import Product from "./Product";
 const ProductFeed = ({ products }) => {
   return (
-    <section className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:-mt-40 mx-auto gap-4">
+    <section className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:-mt-24 mx-auto gap-4">
       {products
         .slice(0, 4)
         .map(({ id, title, price, category, description, image }) => (
           <Product
-            key={id}
+            key={uuidv4()}
             title={title}
             price={price}
             category={category}
@@ -24,7 +24,7 @@ const ProductFeed = ({ products }) => {
           .slice(4, 5)
           .map(({ id, title, price, category, description, image }) => (
             <Product
-              key={id}
+              key={uuidv4()}
               title={title}
               price={price}
               category={category}
@@ -37,7 +37,7 @@ const ProductFeed = ({ products }) => {
         .slice(5)
         .map(({ id, title, price, category, description, image }) => (
           <Product
-            key={id}
+            key={uuidv4()}
             title={title}
             price={price}
             category={category}
