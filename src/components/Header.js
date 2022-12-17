@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import {
   MagnifyingGlassIcon,
   Bars3Icon,
@@ -9,10 +10,8 @@ import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 
 const Header = () => {
+  const router = useRouter();
   const { data, status } = useSession();
-
-  console.log(data);
-  console.log(status);
 
   return (
     <header>
@@ -25,6 +24,7 @@ const Header = () => {
             height={40}
             style={{ objectFit: "contain" }}
             className="cursor-pointer"
+            onClick={() => router.push("/")}
           />
         </section>
 
@@ -65,7 +65,11 @@ const Header = () => {
               <p className="font-extrabold md:text-sm">Sign In</p>
             </div>
           )}
-          <div className="flex items-center relative link">
+
+          <div
+            className="flex items-center relative link"
+            onClick={() => router.push("/checkout")}
+          >
             <ShoppingCartIcon className="h-10" />
             <span className="absolute top-0 right-0 md:right-8 h-4 w-4 bg-yellow-400 rounded-full text-center text-black font-bold">
               0
