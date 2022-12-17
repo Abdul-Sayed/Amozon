@@ -44,7 +44,7 @@ const Banner = () => {
             loading="lazy"
             src="https://mbdc.com/wp-content/uploads/Amazon-Banner-Graphic03-2048x819.jpg"
             alt="Amazon Climate Banner"
-            className="w-screen object-cover object-center h-96"
+            className="w-screen object-cover object-center xl:object-bottom h-96"
           />
         </div>
       </Carousel>

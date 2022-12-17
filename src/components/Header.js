@@ -8,10 +8,13 @@ import {
 import { useSession, signIn, signOut } from "next-auth/react";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
+import { useSelector } from "react-redux";
+import { selectItems } from "../state/slices/cartSlice";
 
 const Header = () => {
   const router = useRouter();
   const { data, status } = useSession();
+  const cartItems = useSelector(selectItems);
 
   return (
     <header>
@@ -20,10 +23,9 @@ const Header = () => {
           <Image
             src="https://pngimg.com/uploads/amazon/amazon_PNG11.png"
             alt="Amazon Logo"
-            width={150}
-            height={40}
-            style={{ objectFit: "contain" }}
-            className="cursor-pointer"
+            width={1024}
+            height={373}
+            className="cursor-pointer object-contain w-36 h-auto"
             onClick={() => router.push("/")}
           />
         </section>
@@ -72,7 +74,7 @@ const Header = () => {
           >
             <ShoppingCartIcon className="h-10" />
             <span className="absolute top-0 right-0 md:right-8 h-4 w-4 bg-yellow-400 rounded-full text-center text-black font-bold">
-              0
+              {cartItems.length}
             </span>
             <p className="hidden md:inline-flex md:text-sm font-extrabold mt-2">
               Cart
