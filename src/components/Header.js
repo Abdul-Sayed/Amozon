@@ -4,8 +4,16 @@ import {
   Bars3Icon,
   ShoppingCartIcon,
 } from "@heroicons/react/24/outline";
+import { useSession, signIn, signOut } from "next-auth/react";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 
 const Header = () => {
+  const { data, status } = useSession();
+
+  console.log(data);
+  console.log(status);
+
   return (
     <header>
       <nav className="flex flex-grow items-center bg-amazon_blue p-1 py-2">
@@ -29,14 +37,34 @@ const Header = () => {
         </section>
 
         <section className="flex items-center font-arial text-white text-xs mx-5 space-x-5 whitespace-nowrap mb-2">
-          <div className="link">
-            <p>Hello User</p>
-            <p className="font-extrabold md:text-sm">Accounts & Lists</p>
-          </div>
-          <div className="link">
-            <p>Returns</p>
-            <p className="font-extrabold md:text-sm">& Orders</p>
-          </div>
+          {status === "authenticated" ? (
+            <>
+              <Popup
+                trigger={
+                  <div className="link">
+                    <p>Hello {data.user.name}</p>
+                    <p className="font-extrabold md:text-sm">
+                      Accounts & Lists
+                    </p>
+                  </div>
+                }
+                position="bottom center"
+                closeOnDocumentClick
+              >
+                <div className="link">
+                  <p onClick={signOut}>Sign Out</p>
+                </div>
+              </Popup>
+              <div className="link">
+                <p>Returns</p>
+                <p className="font-extrabold md:text-sm">& Orders</p>
+              </div>
+            </>
+          ) : (
+            <div className="link" onClick={signIn}>
+              <p className="font-extrabold md:text-sm">Sign In</p>
+            </div>
+          )}
           <div className="flex items-center relative link">
             <ShoppingCartIcon className="h-10" />
             <span className="absolute top-0 right-0 md:right-8 h-4 w-4 bg-yellow-400 rounded-full text-center text-black font-bold">
