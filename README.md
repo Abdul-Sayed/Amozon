@@ -1,1 +1,1 @@
-NextJS, React, Redux, Firestore, Stripe, Fakestore API, NextAuth, Webhooks, Tailwind, Responsive-Carousel
+NextJS, React, Redux, NextAuth, Firestore, Stripe, Fakestore API, Webhooks, Tailwind, Responsive-Carousel

@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import Currency from "react-currency-formatter";
 import { useSession } from "next-auth/react";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
 
 import Header from "../components/Header";
 import CheckoutProduct from "../components/CheckoutProduct";
@@ -12,11 +14,30 @@ import {
   selectItems,
 } from "../state/slices/cartSlice";
 
+const stripePromise = loadStripe(process.env.stripe_public_key);
+
 const Checkout = () => {
   const items = useSelector(selectItems);
   const total = useSelector(itemsTotal);
   const numItems = useSelector(quantityItems);
-  const { status } = useSession();
+  const { data, status } = useSession();
+
+  async function createCheckoutSession() {
+    const stripe = await stripePromise;
+    // call  backend to create a checkout Session
+    const checkoutSession = await axios.post("./api/create-checkout-session", {
+      items,
+      total,
+      numItems,
+      user: data.user,
+    });
+
+    const result = await stripe.redirectToCheckout({
+      sessionId: checkoutSession.data.id,
+    });
+
+    if (result.error) alert(result.error.message);
+  }
 
   return (
     <div className="bg-gray-100">
@@ -73,7 +94,13 @@ const Checkout = () => {
               </span>
             </h2>
             {status === "authenticated" ? (
-              <button className="button mt-2">Checkout</button>
+              <button
+                role="link"
+                className="button mt-2"
+                onClick={createCheckoutSession}
+              >
+                Checkout
+              </button>
             ) : (
               <button
                 disabled

@@ -57,7 +57,14 @@ const Header = () => {
                   <p onClick={signOut}>Sign Out</p>
                 </div>
               </Popup>
-              <div className="link">
+              <div
+                className="link"
+                onClick={() =>
+                  status === "authenticated"
+                    ? router.push("/orders")
+                    : alert("Please Sign In")
+                }
+              >
                 <p>Returns</p>
                 <p className="font-extrabold md:text-sm">& Orders</p>
               </div>

@@ -11,8 +11,7 @@ const nextConfig = {
     ],
   },
   env: {
-    // airbnbApiKey: process.env.AIRBNB_API_KEY,
-    // airbnbApiHost: process.env.AIRBNB_API_HOST,
+    stripe_public_key: process.env.STRIPE_PUBLIC_KEY,
   },
 };
 
