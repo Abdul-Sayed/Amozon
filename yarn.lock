@@ -4769,6 +4769,15 @@ next@latest:
   languageName: node
   linkType: hard
 
+"redux-persist@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "redux-persist@npm:6.0.0"
+  peerDependencies:
+    redux: ">4.0.0"
+  checksum: edaf10dbf17351ce8058d0802357adae8665b3a1ff39371834e37838ddbe1a79cccbc717b8ba54acb5307651ccf51d0f7dc1cbc8dbae0726ff952d11ef61c6b8
+  languageName: node
+  linkType: hard
+
 "redux-thunk@npm:^2.4.2":
   version: 2.4.2
   resolution: "redux-thunk@npm:2.4.2"
@@ -5617,6 +5626,7 @@ next@latest:
     react-redux: ^8.0.5
     react-responsive-carousel: ^3.2.23
     reactjs-popup: ^2.0.5
+    redux-persist: ^6.0.0
     stripe: ^11.5.0
     tailwindcss: ^3.2.2
     uuidv4: ^6.2.13

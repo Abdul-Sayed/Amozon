@@ -9,12 +9,17 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { useSelector } from "react-redux";
-import { selectItems } from "../state/slices/cartSlice";
+import { quantityItems } from "../state/slices/cartSlice";
 
 const Header = () => {
   const router = useRouter();
   const { data, status } = useSession();
-  const cartItems = useSelector(selectItems);
+  const numItems = useSelector(quantityItems);
+
+  function handleSignOut() {
+    router.push("/");
+    signOut();
+  }
 
   return (
     <header>
@@ -54,7 +59,7 @@ const Header = () => {
                 closeOnDocumentClick
               >
                 <div className="link">
-                  <p onClick={signOut}>Sign Out</p>
+                  <p onClick={handleSignOut}>Sign Out</p>
                 </div>
               </Popup>
               <div
@@ -81,7 +86,7 @@ const Header = () => {
           >
             <ShoppingCartIcon className="h-10" />
             <span className="absolute top-0 right-0 md:right-8 h-4 w-4 bg-yellow-400 rounded-full text-center text-black font-bold">
-              {cartItems.length}
+              {numItems}
             </span>
             <p className="hidden md:inline-flex md:text-sm font-extrabold mt-2">
               Cart

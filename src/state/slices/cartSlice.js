@@ -41,12 +41,17 @@ export const cartSlice = createSlice({
 
 export const { addToCart, removeFromCart } = cartSlice.actions;
 
-export const selectItems = (state) => state.cart.items;
+export const cartItems = (state) => state.cart.items;
 
 export const quantityItems = (state) =>
-  state.cart.items.reduce((a, b) => a + b.quantity, 0);
+  state.cart.items.reduce((sum, item) => sum + item.quantity, 0);
 
 export const itemsTotal = (state) =>
-  Math.ceil(state.cart.items.reduce((a, b) => a + b.price, 0) * 100) / 100;
+  Math.ceil(
+    state.cart.items.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    ) * 100
+  ) / 100;
 
 export default cartSlice.reducer;

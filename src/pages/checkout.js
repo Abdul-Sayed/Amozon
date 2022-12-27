@@ -11,13 +11,13 @@ import CheckoutProduct from "../components/CheckoutProduct";
 import {
   itemsTotal,
   quantityItems,
-  selectItems,
+  cartItems,
 } from "../state/slices/cartSlice";
 
 const stripePromise = loadStripe(process.env.stripe_public_key);
 
 const Checkout = () => {
-  const items = useSelector(selectItems);
+  const items = useSelector(cartItems);
   const total = useSelector(itemsTotal);
   const numItems = useSelector(quantityItems);
   const { data, status } = useSession();
