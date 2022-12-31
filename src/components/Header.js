@@ -1,21 +1,28 @@
+import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useSession, signIn, signOut } from "next-auth/react";
 import {
   MagnifyingGlassIcon,
   Bars3Icon,
   ShoppingCartIcon,
 } from "@heroicons/react/24/outline";
-import { useSession, signIn, signOut } from "next-auth/react";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { useSelector } from "react-redux";
 import { quantityItems } from "../state/slices/cartSlice";
 
 const Header = () => {
+  const [searchInput, setSearchInput] = useState("");
+
   const router = useRouter();
   const { data, status } = useSession();
   const numItems = useSelector(quantityItems);
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    router.push(`/search/${searchInput}`);
+  }
   function handleSignOut() {
     router.push("/");
     signOut();
@@ -35,13 +42,18 @@ const Header = () => {
           />
         </section>
 
-        <section className="hidden sm:flex flex-grow items-center rounded-md bg-yellow-400 hover:bg-yellow-500 mb-2 h-11 cursor-pointer">
+        <form
+          onSubmit={handleSubmit}
+          className="hidden sm:flex flex-grow items-center rounded-md bg-yellow-400 hover:bg-yellow-500 mb-2 h-11 cursor-pointer"
+        >
           <input
             type="text"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
             className="h-full p-4 flex-grow flex-shrink rounded-sm rounded-l-md outline-none"
           />
-          <MagnifyingGlassIcon className="h-12 p-4" />
-        </section>
+          <MagnifyingGlassIcon className="h-12 p-4" onClick={handleSubmit} />
+        </form>
 
         <section className="flex items-center font-arial text-white text-xs mx-5 space-x-5 whitespace-nowrap mb-2">
           {status === "authenticated" ? (

@@ -19,6 +19,7 @@ export default async (req, res) => {
 
     // Handle the Stripe checkout session completion event
     if (event.type === "checkout.session.completed") {
+      // Ideally the checkout data would be saved to an api
       const session = event.data.object;
       const stripeData = await stripe.checkout.sessions.list({ limit: 100 });
       return stripeData;

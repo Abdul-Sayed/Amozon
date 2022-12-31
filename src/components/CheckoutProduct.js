@@ -32,7 +32,18 @@ const CheckoutProduct = ({
       />
 
       <div className="col-span-3 mx-5">
-        <h4 className="my-3">{title}</h4>
+        {title.includes("http") ? (
+          <a
+            href={title}
+            alt="Amazon Link"
+            target="_blank"
+            className="my-3 text-blue-700"
+          >
+            {title}
+          </a>
+        ) : (
+          <h4 className="my-3">{title}</h4>
+        )}
 
         {quantity > 1 && <h4 className="my-3">({quantity})</h4>}
 

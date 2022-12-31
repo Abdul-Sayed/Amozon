@@ -4,6 +4,7 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: [
+      "m.media-amazon.com",
       "pngimg.com",
       "fakestoreapi.com",
       "i.pcmag.com",
@@ -12,6 +13,15 @@ const nextConfig = {
   },
   env: {
     stripe_public_key: process.env.STRIPE_PUBLIC_KEY,
+  },
+  async redirects() {
+    return [
+      {
+        source: "/cancel",
+        destination: "/",
+        permanent: true,
+      },
+    ];
   },
 };
 

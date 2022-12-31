@@ -6,15 +6,16 @@ const ProductFeed = ({ products }) => {
     <ul className="grid grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:-mt-24 mx-auto gap-2">
       {products
         .slice(0, 4)
-        .map(({ id, title, price, category, description, image }) => (
+        .map(({ id, title, price, description, category, image, rating }) => (
           <Product
             key={uuidv4()}
             id={id}
             title={title}
             price={price}
-            category={category}
             description={description}
+            category={category}
             image={image}
+            rating={rating.rate}
           />
         ))}
       <Image
@@ -28,29 +29,31 @@ const ProductFeed = ({ products }) => {
       <div className="md:col-span-2">
         {products
           .slice(4, 5)
-          .map(({ id, title, price, category, description, image }) => (
+          .map(({ id, title, price, category, description, image, rating }) => (
             <Product
               key={uuidv4()}
               id={id}
               title={title}
               price={price}
-              category={category}
               description={description}
+              category={category}
               image={image}
+              rating={rating.rate}
             />
           ))}
       </div>
       {products
         .slice(5)
-        .map(({ id, title, price, category, description, image }) => (
+        .map(({ id, title, price, category, description, image, rating }) => (
           <Product
             key={uuidv4()}
             id={id}
             title={title}
             price={price}
-            category={category}
             description={description}
+            category={category}
             image={image}
+            rating={rating.rate}
           />
         ))}
     </ul>

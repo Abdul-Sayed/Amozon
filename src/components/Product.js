@@ -3,11 +3,18 @@ import Image from "next/image";
 import { StarIcon } from "@heroicons/react/24/solid";
 import Currency from "react-currency-formatter";
 import { useDispatch } from "react-redux";
-import { addToCart, removeFromCart } from "../state/slices/cartSlice";
+import { addToCart } from "../state/slices/cartSlice";
 
-const Product = ({ id, title, price, category, description, image }) => {
+const Product = ({
+  id,
+  title,
+  price,
+  description,
+  category,
+  image,
+  rating,
+}) => {
   const [hasMounted, setHasMounted] = useState(false);
-  const [rating] = useState(Math.floor(Math.random() * 5 - 1 + 1 + 1));
   const [hasPrime] = useState(Math.random() > 0.5 ? true : false);
   const dispatch = useDispatch();
 
@@ -21,8 +28,8 @@ const Product = ({ id, title, price, category, description, image }) => {
         id,
         title,
         price,
-        category,
         description,
+        category,
         image,
         rating,
         hasPrime,
@@ -44,17 +51,24 @@ const Product = ({ id, title, price, category, description, image }) => {
         className="h-48 w-auto self-center object-contain"
       />
 
-      <h4 className="my-3">{title}</h4>
-
-      {hasMounted && (
-        <div className="flex">
-          {Array(rating)
-            .fill()
-            .map((_, i) => (
-              <StarIcon key={i} className="h-5 text-yellow-500" />
-            ))}
-        </div>
+      {title.includes("http") ? (
+        <a
+          href={title}
+          alt="Amazon Link"
+          target="_blank"
+          className="my-3 text-sm text-blue-700"
+        >
+          {title}
+        </a>
+      ) : (
+        <h4 className="my-3">{title}</h4>
       )}
+
+      <div className="flex">
+        {Array.from({ length: Math.floor(rating) }, (_, i) => (
+          <StarIcon key={i} className="h-5 text-yellow-500" />
+        ))}
+      </div>
 
       <p className="text-xs my-2 line-clamp-2">{description}</p>
 

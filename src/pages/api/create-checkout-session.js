@@ -2,7 +2,7 @@ import moment from "moment";
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 export default async (req, res) => {
-  const { items, total, user } = req.body;
+  const { items, total, user, numItems } = req.body;
 
   const session = await stripe.checkout.sessions.create({
     line_items: items.map((item) => ({

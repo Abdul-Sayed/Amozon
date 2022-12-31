@@ -28,8 +28,8 @@ const Checkout = () => {
     const checkoutSession = await axios.post("./api/create-checkout-session", {
       items,
       total,
-      numItems,
       user: data.user,
+      numItems,
     });
 
     const result = await stripe.redirectToCheckout({
