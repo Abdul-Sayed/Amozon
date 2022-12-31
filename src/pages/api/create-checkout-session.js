@@ -42,7 +42,7 @@ export default async (req, res) => {
       images: JSON.stringify(items.map((item) => item.image)),
       amount_total: total,
       timestamp: moment().format("lll"),
-      numItems: items.length,
+      numItems: numItems,
     },
   });
 
