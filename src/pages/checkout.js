@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import Currency from "react-currency-formatter";
-import { useSession } from "next-auth/react";
+import { useSession, signIn, signOut } from "next-auth/react";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 
@@ -102,10 +102,7 @@ const Checkout = () => {
                 Checkout
               </button>
             ) : (
-              <button
-                disabled
-                className="button mt-2 from-gray-300 to-gray-500 border-gray-200 text-gray-300 cursor-not-allowed"
-              >
+              <button role="link" className="button mt-2" onClick={signIn}>
                 Sign in to checkout
               </button>
             )}

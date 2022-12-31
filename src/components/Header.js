@@ -93,11 +93,8 @@ const Header = () => {
               </div>
             </>
           ) : (
-            <div className="link" onClick={handleSignIn}>
+            <div className="link hidden" onClick={handleSignIn}>
               <p className="font-extrabold md:text-sm">Sign In</p>
-              <p className="font-extrabold md:text-sm">
-                {status === "authenticated" ? "Logged In" : "Out"}
-              </p>
             </div>
           )}
 
