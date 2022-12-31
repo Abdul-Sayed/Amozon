@@ -29,7 +29,7 @@ const Orders = ({ orders }) => {
                 id={id}
                 amount={amount_total}
                 amountShipping={shipping_cost?.amount_total}
-                items={metadata.numItems}
+                numItems={metadata.numItems}
                 timestamp={metadata.timestamp}
                 images={metadata.images}
               />

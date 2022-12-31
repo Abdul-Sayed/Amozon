@@ -3,7 +3,7 @@ import Currency from "react-currency-formatter";
 import { Image } from "next/image";
 import { v4 as uuidv4 } from "uuid";
 
-const Order = ({ id, amount, amountShipping, items, timestamp, images }) => {
+const Order = ({ id, amount, amountShipping, numItems, timestamp, images }) => {
   return (
     <div className="relative border rounded-md">
       <div className="flex items-center space-x-10 p-5 bg-gray-100 text-sm text-gray-600">
@@ -22,7 +22,7 @@ const Order = ({ id, amount, amountShipping, items, timestamp, images }) => {
           ORDER # {id}
         </p>
         <p className="text-sm whitespace-nowrap sm:text-xl self-end flex-1 text-right text-blue-500">
-          {items?.length}
+          {numItems}
         </p>
       </div>
 

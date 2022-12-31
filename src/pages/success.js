@@ -1,9 +1,13 @@
 import Header from "../components/Header";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { emptyCart } from "../state/slices/cartSlice";
 
 const Success = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
+  dispatch(emptyCart());
 
   return (
     <div className="bg-gray-100 h-screen">

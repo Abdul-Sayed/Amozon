@@ -48,11 +48,9 @@ const CheckoutProduct = ({
         {quantity > 1 && <h4 className="my-3">({quantity})</h4>}
 
         <div className="flex">
-          {Array(rating)
-            .fill()
-            .map((_, i) => (
-              <StarIcon key={i} className="h-5 text-yellow-500" />
-            ))}
+          {Array.from({ length: Math.floor(rating) }, (_, i) => (
+            <StarIcon key={i} className="h-5 text-yellow-500" />
+          ))}
         </div>
 
         <p className="text-xs my-2 line-clamp-3">{description}</p>
