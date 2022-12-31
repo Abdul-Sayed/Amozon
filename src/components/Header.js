@@ -38,11 +38,9 @@ const Header = () => {
     <header>
       <nav className="flex flex-grow items-center bg-amazon_blue p-1 py-2">
         <section className="flex flex-grow sm:flex-grow-0 items-center m-2 mr-4">
-          <Image
+          <img
             src="https://pngimg.com/uploads/amazon/amazon_PNG11.png"
             alt="Amazon Logo"
-            width={1024}
-            height={373}
             className="cursor-pointer object-contain w-36 h-auto"
             onClick={() => router.push("/")}
           />
