@@ -23,6 +23,12 @@ const Header = () => {
     event.preventDefault();
     router.push(`/search/${searchInput}`);
   }
+
+  function handleSignIn() {
+    console.log("auth session", useSession);
+    signIn();
+  }
+
   function handleSignOut() {
     router.push("/");
     signOut();
@@ -87,8 +93,11 @@ const Header = () => {
               </div>
             </>
           ) : (
-            <div className="link" onClick={signIn}>
+            <div className="link" onClick={handleSignIn}>
               <p className="font-extrabold md:text-sm">Sign In</p>
+              <p className="font-extrabold md:text-sm">
+                {status === "authenticated" ? "Logged In" : "Out"}
+              </p>
             </div>
           )}
 
@@ -109,17 +118,83 @@ const Header = () => {
 
       <nav className="flex items-center space-x-3 p-2 pl-6 bg-amazon_blue-light font-arial text-white text-sm">
         <Bars3Icon className="h-6 mr-1" />
-        <p className="link">All</p>
-        <p className="link">Prime</p>
-        <p className="link">Today's Deals</p>
-        <p className="link">Buy Again</p>
-        <p className="link hidden lg:inline-flex">Prime Video</p>
-        <p className="link hidden lg:inline-flex">Amazon Business</p>
-        <p className="link hidden lg:inline-flex">Electronics</p>
-        <p className="link hidden lg:inline-flex">Health and Personal Care</p>
-        <p className="link hidden lg:inline-flex">Food and Grocery</p>
-        <p className="link hidden lg:inline-flex">Pharmacy</p>
-        <p className="link hidden lg:inline-flex">Pet Supplies</p>
+        <a
+          href="https://www.amazon.com/gp/bestsellers/?ref_=nav_em_cs_bestsellers_0_1_1_2"
+          target="_blank"
+          className="link"
+        >
+          All
+        </a>
+        <a
+          href="https://www.amazon.com/amazonprime?_encoding=UTF8&ref=nav_menu_greenbg_rocketman_unrec_cta"
+          target="_blank"
+          className="link"
+        >
+          Prime
+        </a>
+        <a
+          href="https://www.amazon.com/gp/new-releases/?ref_=nav_em_cs_newreleases_0_1_1_3"
+          target="_blank"
+          className="link"
+        >
+          Today's Deals
+        </a>
+        <a
+          href="https://www.amazon.com/gp/new-releases/?ref_=nav_cs_newreleases"
+          target="_blank"
+          className="link"
+        >
+          Books
+        </a>
+        <a
+          href="https://www.amazon.com/Prime-Video/b?node=2676882011"
+          target="_blank"
+          className="link hidden lg:inline-flex"
+        >
+          Prime Video
+        </a>
+        <a
+          href="https://business.amazon.com/"
+          target="_blank"
+          className="link hidden lg:inline-flex"
+        >
+          Amazon Business
+        </a>
+        <a
+          href="https://www.amazon.com/gp/browse.html?node=172282&ref_=nav_em__elec_hub_0_2_15_12"
+          target="_blank"
+          className="link hidden lg:inline-flex"
+        >
+          Electronics
+        </a>
+        <a
+          href="https://www.amazon.com/gp/browse.html?node=3760901&ref_=nav_em__H_HH_T2_0_2_21_14"
+          target="_blank"
+          className="link hidden lg:inline-flex"
+        >
+          Health and Personal Care
+        </a>
+        <a
+          href="https://www.amazon.com/alm/storefront?almBrandId=QW1hem9uIEZyZXNo&ref_=nav_em__afs_aaf_0_2_12_2"
+          target="_blank"
+          className="link hidden lg:inline-flex"
+        >
+          Food and Grocery
+        </a>
+        <a
+          href="https://pharmacy.amazon.com/?ref_=nav_cs_pharmacy"
+          target="_blank"
+          className="link hidden lg:inline-flex"
+        >
+          Pharmacy
+        </a>
+        <a
+          href="https://www.amazon.com/toys/b/?ie=UTF8&node=165793011&ref_=nav_cs_toys"
+          target="_blank"
+          className="link hidden lg:inline-flex"
+        >
+          Toys and Games
+        </a>
       </nav>
     </header>
   );
