@@ -3,7 +3,7 @@ import Header from "./../components/Header";
 import Order from "./../components/Order";
 
 const Orders = ({ orders }) => {
-  const { data, status } = useSession({ required: true });
+  const { status } = useSession({ required: true });
 
   return (
     <div>

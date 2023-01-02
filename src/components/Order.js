@@ -1,6 +1,4 @@
-import moment from "moment";
 import Currency from "react-currency-formatter";
-import { Image } from "next/image";
 import { v4 as uuidv4 } from "uuid";
 
 const Order = ({ id, amount, amountShipping, numItems, timestamp, images }) => {

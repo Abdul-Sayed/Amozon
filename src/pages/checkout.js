@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import Currency from "react-currency-formatter";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 
@@ -51,7 +51,7 @@ const Checkout = () => {
             height={834}
             className={"h-80 object-cover object-top"}
           />
-          <div className="flex flex-col p-5 space-y-10 bg-white">
+          <ul className="flex flex-col p-5 space-y-10 bg-white">
             <h1 className="text-3xl border-b pb-4">
               {items.length === 0 ? "Your cart is empty" : "Your Cart"}
             </h1>
@@ -81,7 +81,7 @@ const Checkout = () => {
                 />
               )
             )}
-          </div>
+          </ul>
         </div>
 
         {items.length > 0 && (
