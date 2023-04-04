@@ -2,7 +2,6 @@
 
 ## Amazon web app, using NextJS, React, Redux Toolkit, Redux Persist, NextAuth, Stripe, Amazon API (RapidAPI),Fakestore API, Webhooks, Tailwind, Responsive-Carousel, Hero-Icons
 
-Live link: https://amozon.vercel.app  
 `API: https://real-time-amazon-data.p.rapidapi.com/search`
 
 ### Pages and Routes
